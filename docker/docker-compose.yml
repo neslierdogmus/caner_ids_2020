@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  jupyterlab-server:
+    image: "${IMAGE_NAME}:${IMAGE_TAG}"
+    build:
+      args:
+        - username=${USER_NAME}
+        - uid=${UID}
+        - gid=${GID}
+      context: ../
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../bin:/home/${USER_NAME}/app/bin
+      - ../data:/home/${USER_NAME}/app/data
+      - ../../Datasets/IDS/CIC2017:/home/${USER_NAME}/app/dataset
+      - ../doc:/home/${USER_NAME}/app/doc
+      - ../notebooks:/home/${USER_NAME}/app/notebooks
+      - ../results:/home/${USER_NAME}/app/results
+      - ../src:/home/${USER_NAME}/app/src
+    init: true
+    stdin_open: true
+    tty: true    

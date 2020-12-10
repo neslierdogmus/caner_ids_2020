@@ -1,0 +1,9 @@
+#!/bin/bash
+
+jupyter labextension install --no-build @pyviz/jupyterlab_pyviz
+jupyter labextension install @jupyterlab/debugger
+jupyter labextension install jupyterlab-jupytext@1.1.1
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labextension install jupyter-matplotlib
+jupyter nbextension enable --py widgetsnbextension
+jupyter lab build
